@@ -28,6 +28,9 @@ public class WordChainGame {
         if (over) {
             return MoveResult.GAME_OVER;
         }
+        if (word.codePointCount(0, word.length()) < 2) {
+            return MoveResult.TOO_SHORT;
+        }
         if (!dictionary.contains(word)) {
             return MoveResult.NOT_A_WORD;
         }
@@ -65,6 +68,7 @@ public class WordChainGame {
         // 이미 쓰인 단어가 섞여 있을 수 있으니 여유 있게 뽑아서 걸러낸다
         return dictionary.autocomplete(prefix, Math.max(limit * 5, 50)).stream()
                 .filter(w -> !usedWords.contains(w))
+                .filter(w -> w.codePointCount(0, w.length()) >= 2) // 한 글자 단어는 후보에서 제외
                 .limit(limit)
                 .toList();
     }

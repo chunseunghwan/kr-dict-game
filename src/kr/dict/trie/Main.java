@@ -6,8 +6,9 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         if (args.length < 1) {
-            System.err.println("사용법: java -cp out/production/kr-dict-game_1 kr.dict.game.WordChainCli src/kr/dict/data/kr_korean.csv");
-            System.err.println("chcp 65001");
+            System.err.println("사용법: cd C:/Users/user/Downloads/kr-dict-game_1/" +
+                    "./run.bat");
+
             return;
         }
 
